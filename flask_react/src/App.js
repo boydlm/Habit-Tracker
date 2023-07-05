@@ -1,11 +1,20 @@
 import { useState } from 'react'
 import axios from "axios";
-import logo from './logo.svg';
 import './App.css';
+import handleSubmit from './handles/handlesubmit';
+import { useRef } from 'react';
+
 
 function App() {
 
-   // new line start
+  const dataRef = useRef()
+ 
+  const submithandler = (e) => {
+    e.preventDefault()
+    handleSubmit(dataRef.current.value)
+    dataRef.current.value = ""
+  }
+
   const [profileData, setProfileData] = useState(null)
 
   function getData() {
@@ -29,21 +38,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        {/* new line start*/}
+      <form onSubmit={submithandler}>
+        <input type= "text" ref={dataRef} />
+        <button type = "submit">Save</button>
+      </form>
+      
         <p>To get your profile details: </p><button onClick={getData}>Click me</button>
         {profileData && <div>
               <p>Profile name: {profileData.profile_name}</p>
@@ -51,9 +50,10 @@ function App() {
             </div>
         }
          {/* end of new line */}
-      </header>
     </div>
   );
 }
 
 export default App;
+
+
