@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
+import { LandingScreen } from './screens/landing';
 
 function PreLoader() {
 
@@ -22,11 +23,10 @@ function PreLoader() {
         <>
             {
                 !done ? (
-                    <ClimbingBoxLoader color="#8BABBC" align="center" size={25} />
+                    <ClimbingBoxLoader color="#97F81A" align="center" size={25} />
                 ) : (
                     <>
-                    
-                        <h1>You are the summation of your habits.</h1>
+                        <h1>Build habits. Build a better you.</h1>
                         <div>
                             <button>Login</button>
                         </div>

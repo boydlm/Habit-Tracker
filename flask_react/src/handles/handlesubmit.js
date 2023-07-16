@@ -1,5 +1,5 @@
 import { addDoc, collection } from "@firebase/firestore"
-import { firestore } from "../firebase_setup/firebase"
+import { firestore } from "../firebase.config"
 
  
 const handleSubmit = (testdata) => {
